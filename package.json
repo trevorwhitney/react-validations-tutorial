@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "gulp serve",
-    "setup": "bower install && npm install"
+    "setup": "npm install && bower install"
   },
   "dependencies": {
     "body-parser": "~1.13.2",
