@@ -1,0 +1,46 @@
+.input {
+  @extend .small-12;
+  @extend .columns;
+
+  span.input-error {
+    display: none;
+    color: white;
+    font-size: 14px;
+    background-color: firebrick;
+    padding-left: 7px;
+  }
+
+  i {
+    display: none;
+    float: right;
+  }
+}
+
+.input-invalid {
+  color: firebrick;
+  font-weight: bold;
+
+  i.fi-x {
+    color: firebrick;
+    display: inline;
+  }
+
+  input {
+    margin: 0;
+    padding: 0;
+  }
+
+  span.input-error {
+    display: block;
+  }
+}
+
+.input-valid {
+  color: forestgreen;
+  font-weight: bold;
+
+  i.fi-check {
+    color: forestgreen;
+    display: inline;
+  }
+}

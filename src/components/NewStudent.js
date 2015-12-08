@@ -5,28 +5,36 @@ export default class NewStudent extends Component {
     return (
       <form className="form" action="/students" method="POST">
         <div className="row">
-          <label htmlFor="firstName">
+          <label htmlFor="firstName" className="input">
             First Name
+            <i className="fi-x" />
+            <i className="fi-check" />
             <input type="text"
                    className="form-control"
                    name="firstName"
                    id="firstName"
             />
+            <span className="input-error">It broke</span>
           </label>
         </div>
         <div className="row">
-          <label htmlFor="lastName">
+          <label htmlFor="lastName" className="input">
             Last Name
+            <i className="fi-x" />
+            <i className="fi-check" />
             <input type="text"
                    className="form-control"
                    name="lastName"
                    id="lastName"
             />
+            <span className="input-error">It didn't break</span>
           </label>
         </div>
         <div className="row">
-          <label htmlFor="dobMonth">
+          <label htmlFor="dobMonth" className="input">
             Date of Birth
+            <i className="fi-x" />
+            <i className="fi-check" />
             <input type="text"
                    className="form-control"
                    name="dob"

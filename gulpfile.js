@@ -25,6 +25,11 @@ gulp.task('build:styles', function () {
     .pipe(gulp.dest('./public/stylesheets'));
 });
 
+gulp.task('build:fonts', function () {
+  gulp.src('./fonts/*.*')
+    .pipe(gulp.dest('./public/fonts'));
+})
+
 /* JavaScript */
 gulp.task('build:js', function () {
   return browserify({
@@ -37,7 +42,7 @@ gulp.task('build:js', function () {
     .pipe(gulp.dest('./public/javascripts'));
 });
 
-gulp.task('build', ['clean', 'build:js', 'build:styles']);
+gulp.task('build', ['clean', 'build:js', 'build:styles', 'build:fonts']);
 
 gulp.task('serve', ['build', 'nodemon'], function() {
   browserSync.init(null, {
