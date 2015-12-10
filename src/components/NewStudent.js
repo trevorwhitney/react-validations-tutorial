@@ -178,7 +178,7 @@ export default class NewStudent extends Component {
       return false
     }
 
-    var parsedDob = moment(dob).format('x')
+    var parsedDob = moment(dob, 'MM/DD/YYYY').format('x')
     var eighteenYearsAgo = moment().subtract(18, 'years').format('x')
     return parsedDob < eighteenYearsAgo
   }
