@@ -5,16 +5,12 @@ export default class NewStudentInput extends Component {
   constructor(props) {
     super(props)
 
-    this.state = {
-      isValid: true,
-      wasTouched: false
-    }
-
-    this.handleInputChange = this.handleInputChange.bind(this)
+    this.validate = this.validate.bind(this)
+    this.change = this.change.bind(this)
   }
 
   render() {
-    const { fieldName, fieldLabel, errorMessage} = this.props
+    const { fieldName, fieldLabel, errorMessage, value} = this.props
 
     return (
       <div className="row">
@@ -24,9 +20,11 @@ export default class NewStudentInput extends Component {
           <i className="fi-check"/>
           <input type="text"
                  className="form-control"
+                 value={value}
                  name={fieldName}
                  id={fieldName}
-                 onBlur={this.handleInputChange}
+                 onBlur={this.validate}
+                 onChange={this.change}
           />
           <span className="input-error">{errorMessage}</span>
         </label>
@@ -36,19 +34,16 @@ export default class NewStudentInput extends Component {
 
   get classNames() {
     return classNames({
-      'input-valid': this.state.wasTouched && this.state.isValid,
-      'input-invalid': this.state.wasTouched && !this.state.isValid
+      'input-valid': this.props.wasTouched && this.props.isValid,
+      'input-invalid': this.props.wasTouched && !this.props.isValid
     })
   }
 
-  handleInputChange(event) {
-    this.setState({
-      isValid: this.validateInput(event.target.value),
-      wasTouched: true
-    })
+  validate(event) {
+    this.props.validator(event.target.value)
   }
 
-  validateInput(value) {
-    return this.props.validator(value)
+  change(event) {
+    this.props.onChange(event.target.value)
   }
 }
