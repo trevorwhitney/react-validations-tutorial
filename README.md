@@ -13,7 +13,7 @@ This has been tested against npm version 3.3.5 and node version 4.1.1.
 1. `npm run setup`
 1. `npm start`
 
-## Day 1
+## Week 1
 
 Clone the repo, and add the following validations to the new student form:
 
@@ -34,3 +34,16 @@ any validations fail on the form submit, then prevent the form from submitting a
 on the current page.
 
 When you are done, please make a PR to this repo with you solution.
+
+## Week 2
+
+Now that we have component that can validate a first name, last name, and date of birth, let's
+examine the resuablitity of react components. In this week, we're going to create another react
+component the reuses the fields and validations we did in week one. Take the input fields from the
+NewStudent component and move them to their own component. NewStudent should now use this component.
+Create another component that uses this same shared component, but also adds a select box that allows
+the user to define the relationship of a guardian to the student, like we demonstrated in class. The
+select box should start empty, and should be validated in the same ways as before (onBlur and onSubmit).
+Have this new GuardianForm component post to /guardians, while the NewStudent component should continue
+to post to /students. If time allows (which it probably won't), I will try to push a starting place, though
+the starting place will be very similar to where we got in class on Thursday.
