@@ -1,7 +1,9 @@
 import React, {Component} from 'react'
 import InputField from './InputField.jsx'
+import ContactFields from './ContactFields.jsx'
+import SelectBox from './SelectBox.jsx'
 
-import {validateName, validateDate} from '../validations'
+import {validateName, validateDate, validateRelationship} from '../validations'
 
 export default class NewStudent extends Component {
   constructor(props) {
@@ -9,7 +11,8 @@ export default class NewStudent extends Component {
     this.state = {
       firstName: undefined,
       lastName: undefined,
-      dob: undefined
+      dob: undefined,
+      guardianRelationship: undefined
     }
     this.handleValueChanged = this.handleValueChanged.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -17,30 +20,27 @@ export default class NewStudent extends Component {
 
   render() {
     return (
-      <form className="form" action="/students" method="POST" onSubmit={this.handleSubmit}>
-        <InputField
-          label="First Name"
-          inputName="firstName"
-          validate={validateName}
-          handleValueChanged={this.handleValueChanged}
-        />
-        <InputField
-          label="Last Name"
-          inputName="lastName"
-          validate={validateName}
-          handleValueChanged={this.handleValueChanged}
-        />
-        <InputField
-          label="Birthdate"
-          inputName="dob"
-          validate={validateDate}
-          handleValueChanged={this.handleValueChanged}
-        />
+      <div>
+        <form className="form" action="/students" method="POST" onSubmit={this.handleSubmit}>
+          <ContactFields handleValueChanged={this.handleValueChanged}/>
+          <div className="row">
+            <button type="submit" disabled={!this.isFormValid()}>Submit</button>
+          </div>
+        </form>
 
-        <div className="row">
-          <button type="submit" disabled={!this.isFormValid()}>Submit</button>
-        </div>
-      </form>
+        <form className="form" action="/guardians" method="POST" onSubmit={this.handleSubmit}>
+          <SelectBox inputName="guardianRelationship"
+                     validate={validateRelationship}
+                     handleValueChanged={this.handleValueChanged}
+                     label="Relationship"
+          />
+
+          <ContactFields handleValueChanged={this.handleValueChanged}/>
+          <div className="row">
+            <button type="submit" disabled={!this.isFormValid()}>Submit</button>
+          </div>
+        </form>
+      </div>
     )
   }
 
@@ -57,7 +57,8 @@ export default class NewStudent extends Component {
 
   isFormValid() {
     return validateName(this.state.firstName) &&
-    validateName(this.state.lastName) &&
-    validateDate(this.state.dob)
+      validateName(this.state.lastName) &&
+      validateDate(this.state.dob) &&
+      validateRelationship(this.state.guardianRelationship)
   }
 }

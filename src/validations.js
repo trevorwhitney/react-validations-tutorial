@@ -1,11 +1,15 @@
 const millisecondsInYear = 1000 * 60 * 60 * 24 * 365
 
+export function validateDate(inputValue) {
+  return typeof inputValue === 'string' && isValidDate(inputValue) && studentIsOfAge(inputValue)
+}
+
 export function validateName(name) {
   return typeof name === 'string' && name.length > 2
 }
 
-export function validateDate(inputValue) {
-  return typeof inputValue === 'string' && isValidDate(inputValue) && studentIsOfAge(inputValue)
+export function validateRelationship(relationship) {
+  return relationship !== ""
 }
 
 function isValidDate(inputValue) {
