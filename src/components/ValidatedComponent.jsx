@@ -3,23 +3,13 @@ import React, {Component} from 'react'
 export default class ValidatedComponent extends Component {
   constructor(props) {
     super(props)
-    this.state = {
-      value: undefined
-    }
 
     this.handleValueChange = this.handleValueChange.bind(this)
   }
 
-  render() {
-    throw new Exception('NOT IMPLEMENTED');
-  }
-
   handleValueChange(event) {
     let inputValue = event.target.value
-    this.setState({value: inputValue})
-    if(this.props.validate(inputValue)) {
-      this.props.handleValueChanged(this.props.inputName, inputValue)
-    }
+    this.props.handleValueChanged(this.props.inputName, inputValue)
   }
 
   validationClassNames() {
@@ -28,7 +18,7 @@ export default class ValidatedComponent extends Component {
       return classNames
     }
 
-    if(this.props.validate(this.state.value)) {
+    if(this.props.validate(this.props.value)) {
       classNames += ' input-valid'
     } else {
       classNames += ' input-invalid'
@@ -38,6 +28,6 @@ export default class ValidatedComponent extends Component {
   }
 
   showValidations() {
-    return (typeof this.state.value !== "undefined") || this.props.showValidations
+    return (typeof this.props.value !== "undefined") || this.props.showValidations
   }
 }

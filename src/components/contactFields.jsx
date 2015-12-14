@@ -15,6 +15,7 @@ export default class ContactFields extends Component {
           validate={validateName}
           handleValueChanged={this.props.handleValueChanged}
           showValidations={this.props.showValidations}
+          value={this.props.firstName}
         />
         <InputField
           label="Last Name"
@@ -22,6 +23,7 @@ export default class ContactFields extends Component {
           validate={validateName}
           handleValueChanged={this.props.handleValueChanged}
           showValidations={this.props.showValidations}
+          value={this.props.lastName}
         />
         <InputField
           label="Birthdate"
@@ -29,6 +31,7 @@ export default class ContactFields extends Component {
           validate={validateDate}
           handleValueChanged={this.props.handleValueChanged}
           showValidations={this.props.showValidations}
+          value={this.props.dob}
         />
       </div>
     )
