@@ -12,7 +12,8 @@ export default class NewStudent extends Component {
       firstName: undefined,
       lastName: undefined,
       dob: undefined,
-      guardianRelationship: undefined
+      guardianRelationship: undefined,
+      submitted: false
     }
     this.handleValueChanged = this.handleValueChanged.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -22,9 +23,9 @@ export default class NewStudent extends Component {
     return (
       <div>
         <form className="form" action="/students" method="POST" onSubmit={this.handleSubmit}>
-          <ContactFields handleValueChanged={this.handleValueChanged}/>
+          <ContactFields handleValueChanged={this.handleValueChanged} showValidations={this.state.submitted}/>
           <div className="row">
-            <button type="submit" disabled={!this.isFormValid()}>Submit</button>
+            <button type="submit">Submit</button>
           </div>
         </form>
 
@@ -33,11 +34,12 @@ export default class NewStudent extends Component {
                      validate={validateRelationship}
                      handleValueChanged={this.handleValueChanged}
                      label="Relationship"
+                     showValidations={this.state.submitted}
           />
 
-          <ContactFields handleValueChanged={this.handleValueChanged}/>
+          <ContactFields handleValueChanged={this.handleValueChanged} showValidations={this.state.submitted}/>
           <div className="row">
-            <button type="submit" disabled={!this.isFormValid()}>Submit</button>
+            <button type="submit">Submit</button>
           </div>
         </form>
       </div>
@@ -50,6 +52,7 @@ export default class NewStudent extends Component {
 
   handleSubmit(event) {
     event.preventDefault()
+    this.setState({['submitted']: true})
     if(this.isFormValid()) {
       event.target.submit()
     }

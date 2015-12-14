@@ -14,18 +14,21 @@ export default class ContactFields extends Component {
           inputName="firstName"
           validate={validateName}
           handleValueChanged={this.props.handleValueChanged}
+          showValidations={this.props.showValidations}
         />
         <InputField
           label="Last Name"
           inputName="lastName"
           validate={validateName}
           handleValueChanged={this.props.handleValueChanged}
+          showValidations={this.props.showValidations}
         />
         <InputField
           label="Birthdate"
           inputName="dob"
           validate={validateDate}
           handleValueChanged={this.props.handleValueChanged}
+          showValidations={this.props.showValidations}
         />
       </div>
     )

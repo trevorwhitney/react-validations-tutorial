@@ -9,7 +9,7 @@ export function validateName(name) {
 }
 
 export function validateRelationship(relationship) {
-  return relationship !== ""
+  return (typeof relationship !== "undefined") && relationship !== ""
 }
 
 function isValidDate(inputValue) {

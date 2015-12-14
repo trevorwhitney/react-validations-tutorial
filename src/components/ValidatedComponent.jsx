@@ -24,7 +24,7 @@ export default class ValidatedComponent extends Component {
 
   validationClassNames() {
     let classNames = 'form-control'
-    if(!this.fieldHasBeenTouched()) {
+    if(!this.showValidations()) {
       return classNames
     }
 
@@ -37,7 +37,7 @@ export default class ValidatedComponent extends Component {
     return classNames
   }
 
-  fieldHasBeenTouched() {
-    return typeof this.state.value !== "undefined"
+  showValidations() {
+    return (typeof this.state.value !== "undefined") || this.props.showValidations
   }
 }
