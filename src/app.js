@@ -1,4 +1,4 @@
-import NewStudent from './components/NewStudent'
+import NewStudent from './components/NewStudent.jsx'
 
 import React from 'react'
 import ReactDOM from 'react-dom'
