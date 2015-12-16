@@ -53,7 +53,7 @@ gulp.task('serve', ['build', 'nodemon'], function() {
     reloadDelay: 1500
   });
 
-  gulp.watch(['./src/*.js', './src/**/*.js'], ['build:js']);
+  gulp.watch(['./src/*.js', './src/**/*.js', './src/**/*.jsx'], ['build:js']);
   gulp.watch(['./views/*.jade'], function() { browserSync.reload()});
   gulp.watch([ './scss/*.scss'], ['build:styles']);
 });

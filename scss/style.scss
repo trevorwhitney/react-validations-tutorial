@@ -40,3 +40,10 @@
 //   "foundation/components/type",
 //   "foundation/components/offcanvas",
 //   "foundation/components/visibility";
+
+input[type="text"].input-invalid {
+  border-color: red;
+}
+input[type="text"].input-valid {
+  border-color: green;
+}
